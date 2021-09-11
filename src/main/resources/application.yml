@@ -1,0 +1,17 @@
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://localhost:3406/order?serverTimezone=UTC&characterEncoding=UTF-8
+    username: order-svc
+    password: order-pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    user: order-svc
+    password: order-pass
+    schemas: order
+    url: jdbc:mysql://localhost:3406/order?serverTimezone=UTC&characterEncoding=UTF-8
+    enabled: true
