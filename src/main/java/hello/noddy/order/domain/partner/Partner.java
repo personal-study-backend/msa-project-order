@@ -1,6 +1,6 @@
 package hello.noddy.order.domain.partner;
 
-import java.time.ZonedDateTime;
+import hello.noddy.order.domain.AbstractEntity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,7 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 @Entity
 @NoArgsConstructor
 @Table(name = "partners")
-public class Partner {
+public class Partner extends AbstractEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +30,6 @@ public class Partner {
   private String businessNo;
   private String email;
 
-  private ZonedDateTime createdAt;
-  private ZonedDateTime updatedAt;
 
   @Enumerated(EnumType.STRING)
   private Status status;
@@ -52,8 +50,6 @@ public class Partner {
     this.businessNo = businessNo;
     this.email = email;
     this.status = Status.ENABLE;
-    this.createdAt = ZonedDateTime.now();
-    this.updatedAt = ZonedDateTime.now();
   }
 
   @Getter
