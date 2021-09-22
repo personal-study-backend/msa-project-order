@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 @Slf4j
 @Getter
@@ -37,13 +38,13 @@ public class Partner {
 
   @Builder
   public Partner(String partnerName, String businessNo, String email) {
-    if (partnerName == null) {
+    if (StringUtils.isEmpty(partnerName)) {
       throw new RuntimeException("empty partnerName");
     }
-    if (businessNo == null) {
+    if (StringUtils.isEmpty(businessNo)) {
       throw new RuntimeException("empty businessNo");
     }
-    if (email == null) {
+    if (StringUtils.isEmpty(email)) {
       throw new RuntimeException("empty email");
     }
     this.partnerToken = "abcde";
