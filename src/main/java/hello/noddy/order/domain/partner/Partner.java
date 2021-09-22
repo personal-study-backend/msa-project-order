@@ -1,5 +1,6 @@
 package hello.noddy.order.domain.partner;
 
+import hello.noddy.order.common.util.TokenGenerator;
 import hello.noddy.order.domain.AbstractEntity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -21,6 +22,8 @@ import org.apache.commons.lang3.StringUtils;
 @NoArgsConstructor
 @Table(name = "partners")
 public class Partner extends AbstractEntity {
+
+  private static final String PREFIX_PARTNER = "ptn_";
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +48,7 @@ public class Partner extends AbstractEntity {
     if (StringUtils.isEmpty(email)) {
       throw new RuntimeException("empty email");
     }
-    this.partnerToken = "abcde";
+    this.partnerToken = TokenGenerator.randomCharacterWithPrefix(PREFIX_PARTNER);
     this.partnerName = partnerName;
     this.businessNo = businessNo;
     this.email = email;
